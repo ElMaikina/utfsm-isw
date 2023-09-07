@@ -1,3 +1,4 @@
+/*TODO: falta agreagar las llaves primarias*/
 CREATE TABLE carabinero (
    rut   				NUMERIC			NOT NULL,
    nombre				VARCHAR(1000)	NOT NULL,
