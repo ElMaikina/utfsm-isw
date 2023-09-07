@@ -1,0 +1,31 @@
+CREATE TABLE carabinero (
+   rut   				NUMERIC			NOT NULL,
+   nombre				VARCHAR(1000)	NOT NULL,
+   fecha_de_nacimiento	DATE			NOT NULL,
+);
+CREATE TABLE inspector (
+   rut   				NUMERIC			NOT NULL,
+   nombre				VARCHAR(1000)	NOT NULL,
+   fecha_de_nacimiento	DATE			NOT NULL,
+);
+CREATE TABLE infractor (
+   rut   				NUMERIC			NOT NULL,
+   nombre				VARCHAR(1000)	NOT NULL,
+   fecha_de_nacimiento	DATE			NOT NULL,
+);
+CREATE TABLE infraccion (
+   rut   				NUMERIC			NOT NULL,
+   patente				VARCHAR(1000)	NOT NULL,
+   gravedad   			NUMERIC			NOT NULL,
+   infraccion			VARCHAR(1000)	NOT NULL,
+   fecha_de_infraccion	DATE			NOT NULL,
+);
+CREATE TABLE juez (
+   rut   				NUMERIC			NOT NULL,
+   nombre				VARCHAR(1000)	NOT NULL,
+   fecha_de_nacimiento	DATE			NOT NULL,
+);
+CREATE TABLE evidencia (
+   foto					VARCHAR(1000)	NOT NULL,
+   descripcion			VARCHAR(1000)	NOT NULL,
+);
