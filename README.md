@@ -20,3 +20,7 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://github.com/ElMaik
 * [Video presentación avance 1] [enlace](https://www.youtube.com/watch?v=Srpv72CV5yQ&feature=youtu.be)
 
 ## Aspectos técnicos relevantes
+
+# Documentacion (Postman API)
+[enlace](https://orange-sunset-482158.postman.co/workspace/c1b80694-4e82-4013-ad86-6f77a349bfa3)
+
