@@ -7,6 +7,18 @@ Este es el repositorio del *Git.gud*, cuyos integrantes son:
 * Integrante 3 - Miguel Soto
 * **Tutor**: Sebastián Cifuentes
 
+# Como correr el backend
+ejecutar el siguiente commando desde esta carpeta:
+```
+python manage.py runserver
+```
+
+# Como correr el frontend
+ejecutar el siguiente commando desde esta carpeta:
+```
+npm start
+```
+
 ## Wiki
 
 > Obtener enlace desde el home de la wiki del repo.
