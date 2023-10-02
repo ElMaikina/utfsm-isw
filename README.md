@@ -12,13 +12,13 @@ Este es el repositorio del *Git.gud*, cuyos integrantes son:
 A continuacion, las instrucciones de cómo hacer funcionar la aplicación.
 
 ## Como correr el backend
-ejecutar el siguiente commando desde esta carpeta:
+ejecutar el siguiente commando desde la carpeta _gitgud-san-benito/back_:
 ```
 python manage.py runserver
 ```
 
 ## Como correr el frontend
-ejecutar el siguiente commando desde esta carpeta:
+ejecutar el siguiente commando desde la carpeta _gitgud-san-benito/front_:
 ```
 npm start
 ```
