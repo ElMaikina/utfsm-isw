@@ -7,6 +7,12 @@ Este es el repositorio del *Git.gud*, cuyos integrantes son:
 * Integrante 3 - Miguel Soto
 * **Tutor**: Sebastián Cifuentes
 
+## Front-End
+![alt text](front.png)
+
+## Back-End
+![alt text](back.png)
+
 # Instrucciones
 
 A continuacion, las instrucciones de cómo hacer funcionar la aplicación.
