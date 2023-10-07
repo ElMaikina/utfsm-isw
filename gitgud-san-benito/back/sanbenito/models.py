@@ -7,13 +7,13 @@ class Carabinero(models.Model):
     def __str__(self):
         return self.name
     
-class Inspector(models.Model):
+class Inspectores(models.Model):
     rut=models.CharField(max_length=7)
     nombre=models.CharField(max_length=100)
     def __str__(self):
         return self.name
 
-class Infraccion(models.Model):
+class Infracciones(models.Model):
     numero=models.CharField(max_length=100)
     nivel=models.CharField(max_length=100)
     vehiculo=models.CharField(max_length=100)

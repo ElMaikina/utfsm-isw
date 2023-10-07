@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Carabinero
-from .models import Inspector
-from .models import Infraccion
+from .models import Inspectores
+from .models import Infracciones
 
 admin.site.register(Carabinero)
-admin.site.register(Inspector)
-admin.site.register(Infraccion)
+admin.site.register(Inspectores)
+admin.site.register(Infracciones)
