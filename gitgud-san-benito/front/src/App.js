@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="create">
-      <h2>Reportar Infraccion</h2>
+      <h2>Reportar Infracción</h2>
       <form>
         <label>RUT Infractor:</label>
         <input 
@@ -28,20 +28,20 @@ function App() {
           value={patent}
           onChange={(e) => setPatent(e.target.value)}
         />
-        <label>Modelo del vehiculo:</label>
+        <label>Modelo del vehículo:</label>
         <input 
           type="text" 
           required 
           value={model}
           onChange={(e) => setModel(e.target.value)}
         />
-        <label>Descripcion de la Infraccion:</label>
+        <label>Descripcion de la Infracción:</label>
         <textarea
           required
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         ></textarea>
-        <label>severidad:</label>
+        <label>Severidad:</label>
         <select
           value={severidad}
           onChange={(e) => setSev(e.target.value)}
