@@ -37,5 +37,19 @@ p{
 <body>
     <h1>Backend de San Benito Web</h1>
     <h2>Aquí se verán las views y clases de la Base de Datos.</h2>
+
+    <h2>Entidades:</h2>
+    <ul>
+        {% for model in models %}
+            <li>{{ model.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Vistas:</h2>
+    <ul>
+        {% for view in all_views %}
+            <li>{{ view }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

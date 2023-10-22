@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import render
 from django.db import models
 
 # Modelo base de una persona
@@ -36,4 +38,3 @@ class Infraccion(models.Model):
 
     def __str__(self):
         return f"Infracción ID: {self.id} - Acusado: {self.acusado} - Acusante: {self.acusante}"
-
