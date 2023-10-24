@@ -4,45 +4,40 @@ from django.http import HttpResponse
 from django.urls import get_resolver
 from django.apps import apps
 
+from . serializer import *
+from . models import *
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
-from .serializer import *
-from .models import *
-
-# Muestra todas las infracciones cometidas por un mismo infractor
-def infracciones_por_infractor(request, rut_infractor):
-    infracciones = Infraccion.objects.filter(acusado=rut_infractor)
-    return render(request, 'infracciones_por_infractor.html', {'infracciones': infracciones})
-
-# Muestra todas las infracciones emitidas por un mismo acusante
-def infracciones_por_acusante(request, rut_acusante):
-    infracciones = Infraccion.objects.filter(acusante=rut_acusante)
-    return render(request, 'infracciones_por_acusante.html', {'infracciones': infracciones})
-
-# Muestra las infracciones por orden de gravedad
-def infracciones_por_gravedad(request):
-    infracciones = Infraccion.objects.order_by('-gravedad')
-    return render(request, 'infracciones_por_gravedad.html', {'infracciones': infracciones})
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.renderers import HTMLFormRenderer, JSONRenderer, BrowsableAPIRenderer
 
 # Usa el API REST para conectarse con React
 
 # Muestra todos los carabineros
-class VerCarabineros(APIView):
-    def get(self, request):
-        output = [{'nombres': output.nombres, 
-                    'apellidos': output.apellidos, 
-                    'rut': output.rut, 
-                    'fecha_de_nacimiento': output.fecha_de_nacimiento, 
-                    'rango': output.rango}
-                  for output in Carabinero.objects.all()]
-        return Response(output)
-    
-    def post(self, request):
-        serializer = CarabineroSerial(data=request.data)
-        if serializer.is_valid(raise_execption=True):
-            serializer.save()
-            return Response(serializer.data)
+class VerCarabineros(ModelViewSet):
+    queryset = Carabinero.objects.all()
+    serializer_class = CarabineroSerial
+
+# Muestra todos los inspectores
+class VerInspectores(ModelViewSet):
+    queryset = Inspector.objects.all()
+    serializer_class = InspectorSerial
+
+# Muestra todos los infractores
+class VerInfractores(ModelViewSet):
+    queryset = Infractor.objects.all()
+    serializer_class = InfractorSerial
+
+# Muestra todos las infracciones
+class VerInfracciones(ModelViewSet):
+    queryset = Infraccion.objects.all()
+    serializer_class = InfraccionSerial
+
+# Muestra todos las infracciones
+class VerEvidencia(ModelViewSet):
+    queryset = Evidencia.objects.all()
+    serializer_class = EvidenciaSerial
 
 # Muestra la pagina principal de backend
 def index(request):
