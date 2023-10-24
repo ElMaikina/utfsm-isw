@@ -6,7 +6,7 @@ from django.db import models
 class Persona(models.Model):
     nombres = models.CharField(max_length=255)
     apellidos = models.CharField(max_length=255)
-    rut = models.CharField(max_length=9, unique=True)  # Aquí estamos usando un campo CharField para representar el RUT
+    rut = models.CharField(max_length=9, primary_key=True)  # Aquí estamos usando un campo CharField para representar el RUT
     fecha_de_nacimiento = models.DateField()
 
     def __str__(self):
@@ -35,6 +35,13 @@ class Infraccion(models.Model):
     acusado = models.CharField(max_length=9)  # RUT del infractor
     acusante = models.CharField(max_length=9)  # RUT del carabinero o inspector
     patente_auto = models.CharField(max_length=10)
+    multa = models.IntegerField()
 
     def __str__(self):
         return f"Infracción ID: {self.id} - Acusado: {self.acusado} - Acusante: {self.acusante}"
+
+# Documento que contiene la evidencia de una infraccion
+class Evidencia(models.Model):
+    id = models.AutoField(primary_key=True)
+    acusado = models.IntegerField()
+    descripcion = models.IntegerField()
