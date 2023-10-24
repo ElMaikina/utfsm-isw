@@ -4,12 +4,11 @@ from django.http import HttpResponse
 from django.urls import get_resolver
 from django.apps import apps
 
-from .models import Persona
-from .models import Carabinero
-from .models import Inspector
-from .models import Infractor
-from .models import Juez
-from .models import Infraccion
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from .serializer import *
+from .models import *
 
 # Muestra todas las infracciones cometidas por un mismo infractor
 def infracciones_por_infractor(request, rut_infractor):
@@ -25,6 +24,25 @@ def infracciones_por_acusante(request, rut_acusante):
 def infracciones_por_gravedad(request):
     infracciones = Infraccion.objects.order_by('-gravedad')
     return render(request, 'infracciones_por_gravedad.html', {'infracciones': infracciones})
+
+# Usa el API REST para conectarse con React
+
+# Muestra todos los carabineros
+class VerCarabineros(APIView):
+    def get(self, request):
+        output = [{'nombres': output.nombres, 
+                    'apellidos': output.apellidos, 
+                    'rut': output.rut, 
+                    'fecha_de_nacimiento': output.fecha_de_nacimiento, 
+                    'rango': output.rango}
+                  for output in Carabinero.objects.all()]
+        return Response(output)
+    
+    def post(self, request):
+        serializer = CarabineroSerial(data=request.data)
+        if serializer.is_valid(raise_execption=True):
+            serializer.save()
+            return Response(serializer.data)
 
 # Muestra la pagina principal de backend
 def index(request):
@@ -45,6 +63,9 @@ def index(request):
             print("   - " + campo.name + ": " + campo.__class__.__name__)
 
     # Muestra todas las vistas por terminal
-    print("Vistas:", all_views)
+    print("Vistas:")
+    for view in all_views:
+        print(" - " + view)
 
     return render(request, 'index.html', {'models': models, 'all_views': all_views})
+    
