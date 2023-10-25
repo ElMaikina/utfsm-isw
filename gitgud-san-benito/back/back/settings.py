@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sanbenito',
-    'rest_framework',
-    'corsheaders'
+    'sanbenito'
 ]
 
 MIDDLEWARE = [
@@ -49,13 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
 ]
-
-REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.AllowAny']}
-
-CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'back.urls'
 
@@ -84,9 +77,12 @@ WSGI_APPLICATION = 'back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sanbenito',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'pg',
+        'PASSWORD':'postgres',
+        'HOST':'localhost'
+        'PORT': 5432
+        
     }
 }
 
