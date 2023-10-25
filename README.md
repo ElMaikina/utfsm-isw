@@ -39,7 +39,9 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://github.com/ElMaik
 
 > Reemplazar con los enlaces correspondientes
 
-* [Video presentación avance 1] [enlace](https://www.youtube.com/watch?v=Srpv72CV5yQ&feature=youtu.be)
+* Video presentación (1er Avance) [enlace](https://www.youtube.com/watch?v=Srpv72CV5yQ&feature=youtu.be)
+
+* Video presentación (Hito 4) [enlace](https://youtu.be/ttK2AKOpbxQ)
 
 ## Aspectos técnicos relevantes
 
