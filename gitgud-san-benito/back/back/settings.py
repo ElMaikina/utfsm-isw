@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w42&6c%^%omkzay#3f$9tvyrc#)tu5*16j_67tvl&o9k!75e_b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sanbenito'
+    'sanbenito',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -75,14 +76,12 @@ WSGI_APPLICATION = 'back.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+    'default': {    
+        "ENGINE": "django.db.backends.postgresql",
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD':'postgres',
-        'HOST':'localhost'
-        'PORT': 5432
-        
+        "HOST": 'db',
+        "PORT": '5432',
     }
 }
 
