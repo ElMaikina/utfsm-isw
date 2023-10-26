@@ -10,6 +10,8 @@ services:
     build: ./gitgud-san-benito/back
     environment:
       - APP_PORT=8000
+    expose:
+      - 8000
     ports:
       - "8000:8000"
     links:
