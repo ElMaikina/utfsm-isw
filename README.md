@@ -17,17 +17,15 @@ Este es el repositorio del *Git.gud*, cuyos integrantes son:
 
 A continuacion, las instrucciones de cómo hacer funcionar la aplicación.
 
-## Como correr el backend
-ejecutar el siguiente commando desde la carpeta _gitgud-san-benito/back_:
+- Estar en la carpeta de 'utfsm-isw/'
+- Abrir el CMD o Powershell desde ahi y ejecutar el siguiente comando:
 ```
-python manage.py runserver
+docker compose up
 ```
+- Una vez se haya montado el _"Docker"_ efectivamente, entrar a los siguientes puertos desde su navegador de preferencia para acceder a las diferentes funciones.
 
-## Como correr el frontend
-ejecutar el siguiente commando desde la carpeta _gitgud-san-benito/front_:
-```
-npm start
-```
+    - Para acceder al Front-End de la aplicacion: http://localhost:8080/ 
+    - Para acceder al Back-End de la aplicacion: http://localhost:8000/
 
 ## Wiki
 
