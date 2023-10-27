@@ -2,8 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
+
+
+
 function App() {
-  
+  const handleClick = () => {
+    console.log('serpell se la come.');
+  };
   const [rut, setRut] = useState('');
   const [patent, setPatent] = useState('');
   const [desc, setDesc] = useState('');
@@ -50,7 +55,7 @@ function App() {
           <option value="moderada">Moderada</option>
           <option value="grave">Grave</option>
         </select>
-        <button>Entregar</button>
+        <button onClick={handleClick}>Entregar</button>
       </form>
     </div>
   );
