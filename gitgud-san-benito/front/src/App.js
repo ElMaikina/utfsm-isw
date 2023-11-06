@@ -7,7 +7,7 @@ import {useState} from 'react';
 
 function App() {
   const handleClick = () => {
-    console.log('serpell se la come.');
+    console.log('Lindo Clonazepam <3.');
   };
   const [rut, setRut] = useState('');
   const [patent, setPatent] = useState('');

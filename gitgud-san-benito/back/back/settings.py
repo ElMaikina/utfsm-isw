@@ -24,8 +24,9 @@ SECRET_KEY = 'django-insecure-w42&6c%^%omkzay#3f$9tvyrc#)tu5*16j_67tvl&o9k!75e_b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sanbenito',
     'rest_framework',
-    'corsheaders'
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -49,13 +50,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
-
-REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.AllowAny']}
-
-CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'back.urls'
 
@@ -82,11 +79,12 @@ WSGI_APPLICATION = 'back.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sanbenito',
+    'default': {    
+        "ENGINE": "django.db.backends.postgresql",
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'pg',
+        "HOST": 'db',
+        "PORT": '5432',
     }
 }
 

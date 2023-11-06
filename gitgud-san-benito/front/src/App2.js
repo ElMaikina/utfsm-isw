@@ -1,6 +1,8 @@
 import {useState} from 'react';
 
 function Appinfractsearch() {
+  const [rut, setRut] = useState('');
+
   const handleClick = () => {
     fetch("http://127.0.0.1:8000/infractores/")
     .then(response => {
@@ -11,6 +13,7 @@ function Appinfractsearch() {
     })  
     .then(data => {
       console.log(data);
+      console.log("RUT buscado" + rut);
       //var infractores = JSON.stringify(data, null, 2);;
       //document.getElementById("listaDeInfractores").innerHTML = infractores;
 
@@ -55,7 +58,6 @@ function Appinfractsearch() {
       console.error('There was a problem with the fetch operation:', error);
     })
   };
-  const [rut, setRut] = useState('');
   
 
   return (
