@@ -51,7 +51,12 @@
 .blog-preview a{
   text-decoration: none;
 }
-
+/*Color de titulo*/
+h1 {
+  font-size: 60px;
+  color: #f1356d;
+  padding: 30px;
+}
 /* blog details page */
 .blog-details h2 {
   font-size: 20px;
@@ -75,6 +80,7 @@
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
+  padding: 20px;
 }
 .create label {
   text-align: left;
