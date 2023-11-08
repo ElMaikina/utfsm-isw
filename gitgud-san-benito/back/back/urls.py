@@ -24,5 +24,6 @@ router = DefaultRouter()
 router.registry.extend(post_router.registry)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('api/', include('user_api.urls')),
 ]
