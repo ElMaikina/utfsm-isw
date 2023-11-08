@@ -12,6 +12,9 @@ class Carabinero(models.Model):
     apellidos = models.CharField(max_length=255, null=True)
     fecha_de_nacimiento = models.DateField(default=timezone.now, null=False)
     rango = models.CharField(max_length=50, null=True)
+
+    username = models.CharField(max_length=50, null=True)
+    password = models.CharField(max_length=50, null=True)
     def __str__(self):
         return f"{self.nombres} {self.apellido}"
 
@@ -21,6 +24,10 @@ class Inspector(models.Model):
     apellidos = models.CharField(max_length=255, null=True)
     fecha_de_nacimiento = models.DateField(default=timezone.now, null=False)
     area_de_inspeccion = models.CharField(max_length=100, null=True)
+    
+    username = models.CharField(max_length=50, null=True)
+    password = models.CharField(max_length=50, null=True)
+    
     def __str__(self):
         return f"{self.nombres} {self.apellido}"
 
@@ -40,6 +47,9 @@ class Juez(models.Model):
     apellidos = models.CharField(max_length=255, null=True)
     fecha_de_nacimiento = models.DateField(default=timezone.now, null=False)
     experiencia_judicial = models.PositiveIntegerField(default=0)
+
+    username = models.CharField(max_length=50, null=True)
+    password = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return f"{self.nombres} {self.apellido}"
