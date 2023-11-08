@@ -22,7 +22,6 @@ const MyComponent = () => {
         body: JSON.stringify(formData),
       });
 
-<<<<<<< HEAD
       if (response.ok) {
         const data = await response.json();
         console.log('Persona creada:', data);
@@ -37,12 +36,7 @@ const MyComponent = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-=======
-function App() {
-  const handleClick = () => {
-  console.log('Lindo Clonazepam <3.');
 
->>>>>>> ad1bb9cdac3c1f2e4ad9cb6abcc210304e10177e
   };
 
   return (
