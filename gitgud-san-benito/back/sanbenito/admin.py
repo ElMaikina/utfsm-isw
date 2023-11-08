@@ -8,6 +8,8 @@ from .models import Infractor
 from .models import Juez
 from .models import Infraccion
 
+
+
 admin.site.register(Carabinero)
 admin.site.register(Inspector)
 admin.site.register(Infractor)
