@@ -40,7 +40,6 @@ const MyComponent = () => {
 
   return (
     <div className="create">
-      <h1>Municipalidad de San Benito!</h1>
       <h2>Ingresar Infractor</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -79,16 +78,7 @@ const MyComponent = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div>
-            <label>Número de Infracciones:</label>
-            <input
-              type="number"
-              name="numero_de_infracciones"
-              value={formData.numero_de_infracciones}
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type="submit">Crear Persona</button>
+          <button type="submit">Ingresar</button>
         </form>
       </div>
   );

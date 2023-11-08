@@ -53,8 +53,10 @@
 }
 /*Color de titulo*/
 h1 {
-  font-size: 60px;
+  justify-content: center;
+  text-align: center;
   color: #f1356d;
+  font-size: 60px;
   padding: 30px;
 }
 /* blog details page */
@@ -80,7 +82,7 @@ h1 {
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
 }
 .create label {
   text-align: left;
@@ -89,7 +91,7 @@ h1 {
 .create h2 {
   font-size: 20px;
   color: #f1356d;
-  margin-bottom: 30px;
+  padding: 20px;
 }
 .create input, .create textarea, .create select {
   width: 100%;

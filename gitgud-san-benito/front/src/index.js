@@ -9,9 +9,10 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    <Appinfractsearch />
-    <Appinfractshow />
+    <h1>Municipalidad de San Benito</h1>
+    <App/>
+    <Appinfractsearch/>
+    <Appinfractshow/>
   </React.StrictMode>
 );
 

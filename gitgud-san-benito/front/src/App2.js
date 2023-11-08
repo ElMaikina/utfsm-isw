@@ -52,11 +52,21 @@ const Appinfractsearch = () => {
       {foundPerson && (
         <div className="result">
           <h2>Persona Encontrada:</h2>
-          <p>RUT: {foundPerson.rut}</p>
-          <p>Nombres: {foundPerson.nombres}</p>
-          <p>Apellidos: {foundPerson.apellidos}</p>
-          <p>Fecha de Nacimiento: {foundPerson.fecha_de_nacimiento}</p>
-          <p>Número de Infracciones: {foundPerson.numero_de_infracciones}</p>
+          <table>
+            <tr>
+              <th>RUT</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Fecha de Nacimiento</th>
+            </tr>
+            <tr>
+              <td>{foundPerson.rut}</td>
+              <td>{foundPerson.nombres}</td>
+              <td>{foundPerson.apellidos}</td>
+              <td>{foundPerson.fecha_de_nacimiento}</td>
+              <td></td>
+            </tr>
+          </table>
         </div>
       )}
 
