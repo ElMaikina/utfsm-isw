@@ -1,65 +1,97 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import {useState} from 'react';
 
+const MyComponent = () => {
+  const [formData, setFormData] = useState({
+    rut: '',
+    nombres: '',
+    apellidos: '',
+    fecha_de_nacimiento: '',
+    numero_de_infracciones: 0,
+  });
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    try {
+      const response = await fetch("http://127.0.0.1:8000/infractores/", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-function App() {
-  const handleClick = () => {
-    console.log('serpell se la come.');
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Persona creada:', data);
+      } else {
+        console.error('Error al crear la persona');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
-  const [rut, setRut] = useState('');
-  const [patent, setPatent] = useState('');
-  const [desc, setDesc] = useState('');
-  const [severidad, setSev] = useState('leve');
-  const [model, setModel] = useState('nunoki');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <div className="create">
-      <h2>Reportar Infracción</h2>
-      <form>
-        <label>RUT Infractor:</label>
-        <input 
-          type="text" 
-          required 
-          value={rut}
-          onChange={(e) => setRut(e.target.value)}
-        />
-        <label>Patente del vehiculo:</label>
-        <input 
-          type="text" 
-          required 
-          value={patent}
-          onChange={(e) => setPatent(e.target.value)}
-        />
-        <label>Modelo del vehículo:</label>
-        <input 
-          type="text" 
-          required 
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-        />
-        <label>Descripcion de la Infracción:</label>
-        <textarea
-          required
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        ></textarea>
-        <label>Severidad:</label>
-        <select
-          value={severidad}
-          onChange={(e) => setSev(e.target.value)}
-        >
-          <option value="leve">Leve</option>
-          <option value="moderada">Moderada</option>
-          <option value="grave">Grave</option>
-        </select>
-        <button onClick={handleClick}>Entregar</button>
-      </form>
-    </div>
+      <h1>Municipalidad de San Benito!</h1>
+      <h2>Ingresar Infractor</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>RUT:</label>
+            <input
+              type="text"
+              name="rut"
+              value={formData.rut}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Nombres:</label>
+            <input
+              type="text"
+              name="nombres"
+              value={formData.nombres}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Apellidos:</label>
+            <input
+              type="text"
+              name="apellidos"
+              value={formData.apellidos}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Fecha de Nacimiento:</label>
+            <input
+              type="date"
+              name="fecha_de_nacimiento"
+              value={formData.fecha_de_nacimiento}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Número de Infracciones:</label>
+            <input
+              type="number"
+              name="numero_de_infracciones"
+              value={formData.numero_de_infracciones}
+              onChange={handleInputChange}
+            />
+          </div>
+          <button type="submit">Crear Persona</button>
+        </form>
+      </div>
   );
-  
-}
+};
 
-export default App;
+export default MyComponent;
