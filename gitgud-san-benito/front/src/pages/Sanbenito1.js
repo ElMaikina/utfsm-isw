@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import './Sanbenito.css';
 
-
-
-
-
 const MyComponent = () => {
   const [formData, setFormData] = useState({
     rut: '',
@@ -45,7 +41,12 @@ const MyComponent = () => {
 
   return (
     <div className="create">
-      <h1>Municipalidad de San Benito!</h1>
+      <div class="menu">
+      <a href='Sanbenito1' class='button'>Ingresar</a>
+      <a href='Sanbenito2' class='button'>Buscar</a>
+      <a href='Sanbenito3' class='button'>Mostrar</a>
+      </div>
+      <h1>Municipalidad de San Benito</h1>
       <h2>Ingresar Infractor</h2>
         <form onSubmit={handleSubmit}>
           <div>
