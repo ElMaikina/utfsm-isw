@@ -1,79 +1,66 @@
-import {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sanbenito.css';
 
-function Appinfractshow() {
-  const handleClick = () => {
-    //console.log('serpell se la come!');
-    fetch("http://127.0.0.1:8000/infractores/")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // or response.json() for JSON data
-    })  
-    .then(data => {
-      console.log(data);
-      //var infractores = JSON.stringify(data, null, 2);;
-      //document.getElementById("listaDeInfractores").innerHTML = infractores;
+const ListPeople = () => {
+  const [people, setPeople] = useState([]);
+  const [filteredPeople, setFilteredPeople] = useState([]);
+  const [rutFilter, setRutFilter] = useState('');
 
-      // Reference to the tableOfContents element
-      var tableOfContents = document.getElementById("listaDeInfractores");
+  useEffect(() => {
+    // Realizar una solicitud GET inicial para obtener la lista completa de personas
+    fetch('http://127.0.0.1:8000/infractores/')
+      .then((response) => response.json())
+      .then((data) => {
+        setPeople(data);
+        setFilteredPeople(data);
+      })
+      .catch((error) => console.error('Error:', error));
+  }, []);
 
-      // Create an HTML table
-      var table = document.createElement("table");
+  const handleRutFilterChange = (e) => {
+    const value = e.target.value;
+    setRutFilter(value);
 
-      // Create the table header
-      var headerRow = table.insertRow(0);
-      var rutHeader = headerRow.insertCell(0);
-      rutHeader.textContent = "RUT";
-      var nombresHeader = headerRow.insertCell(1);
-      nombresHeader.textContent = "Nombres";
-      var apellidosHeader = headerRow.insertCell(2);
-      apellidosHeader.textContent = "Apellidos";
-      var fechaDeNacimientoHeader = headerRow.insertCell(3);
-      fechaDeNacimientoHeader.textContent = "Fecha de Nacimiento";
-      var numeroDeInfraccionesHeader = headerRow.insertCell(4);
-      numeroDeInfraccionesHeader.textContent = "Número de Infracciones";
-
-      // Create table rows for each object
-      data.forEach(function (item, index) {
-        var row = table.insertRow(index + 1);
-        var rutCell = row.insertCell(0);
-        rutCell.textContent = item.rut;
-        var nombresCell = row.insertCell(1);
-        nombresCell.textContent = item.nombres;
-        var apellidosCell = row.insertCell(2);
-        apellidosCell.textContent = item.apellidos;
-        var fechaDeNacimientoCell = row.insertCell(3);
-        fechaDeNacimientoCell.textContent = item.fecha_de_nacimiento;
-        var numeroDeInfraccionesCell = row.insertCell(4);
-        numeroDeInfraccionesCell.textContent = item.numero_de_infracciones;
-      });
-
-      // Append the table to the tableOfContents element
-      tableOfContents.appendChild(table);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    })
-
+    // Filtrar la lista de personas por "rut" cuando el usuario ingrese un valor en el campo de filtro
+    const filtered = people.filter((person) =>
+      person.rut.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredPeople(filtered);
   };
-  const [rut, setRut] = useState('');
-    
+
   return (
-    <div className="create">
+    <div className="list-people-container">
       <div class="menu">
       <a href='Sanbenito1' class='button'>Ingresar</a>
       <a href='Sanbenito2' class='button'>Buscar</a>
       <a href='Sanbenito3' class='button'>Mostrar</a>
       </div>
       <h1>Municipalidad de San Benito</h1>
-      <h2>Desplegar infractores</h2>
-      <button onClick={handleClick}>Mostrar</button>
-      <p id="listaDeInfractores"></p>
+      <h2>Mostrar Infractores</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>RUT</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Número de Infracciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredPeople.map((person) => (
+            <tr key={person.id}>
+              <td>{person.rut}</td>
+              <td>{person.nombres}</td>
+              <td>{person.apellidos}</td>
+              <td>{person.fecha_de_nacimiento}</td>
+              <td>{person.numero_de_infracciones}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-  
-}
+};
 
-export default Appinfractshow;
+export default ListPeople;
