@@ -93,13 +93,16 @@ CORS_ALLOW_CREDENTIALS = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+    'default': {    
+        "ENGINE": "django.db.backends.postgresql",
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'pg',
+        "HOST": 'db',
+        "PORT": '5432',
     }
 }
+
+
 AUTH_USER_MODEL = 'user_api.AppUser'
 
 REST_FRAMEWORK = {
