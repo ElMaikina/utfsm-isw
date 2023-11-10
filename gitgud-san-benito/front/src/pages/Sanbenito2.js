@@ -1,74 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sanbenito.css';
 
-const Appinfractsearch = () => {
-  const [rut, setRut] = useState('');
-  const [foundPerson, setFoundPerson] = useState(null);
+const ListPeople = () => {
+  const [people, setPeople] = useState([]);
+  const [filteredPeople, setFilteredPeople] = useState([]);
+  const [rutFilter, setRutFilter] = useState('');
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    // Realizar una solicitud GET inicial para obtener la lista completa de personas
+    fetch('http://127.0.0.1:8000/infractores/')
+      .then((response) => response.json())
+      .then((data) => {
+        setPeople(data);
+        setFilteredPeople(data);
+      })
+      .catch((error) => console.error('Error:', error));
+  }, []);
 
-    try {
-      const response = await fetch("http://127.0.0.1:8000/infractores/?rut=${rut}", {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+  const handleRutFilterChange = (e) => {
+    const value = e.target.value;
+    setRutFilter(value);
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.length > 0) {
-          // Se encontró a la persona
-          const person = data[0]; // Suponiendo que solo se encuentra una persona con el RUT
-          setFoundPerson(person);
-        } else {
-          // No se encontró a la persona
-          setFoundPerson(null);
-        }
-      } else {
-        console.error('Error al buscar la persona por RUT');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    // Filtrar la lista de personas por "rut" cuando el usuario ingrese un valor en el campo de filtro
+    const filtered = people.filter((person) =>
+      person.rut.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredPeople(filtered);
   };
 
   return (
-    <div className="create">
-    <div class="menu">
-    <a href='Sanbenito1' class='button'>Ingresar</a>
-    <a href='Sanbenito2' class='button'>Buscar</a>
-    <a href='Sanbenito3' class='button'>Mostrar</a>
-    </div>
-    <h1>Municipalidad de San Benito</h1>
-    <h2>Buscar Persona por RUT:</h2>
-      <form onSubmit={handleSearch}>
-        <div>
-          <input
-            type="text"
-            name="rut"
-            value={rut}
-            onChange={(e) => setRut(e.target.value)}
-          />
-        </div>
-        <button type="submit">Buscar</button>
-      </form>
-
-      {foundPerson && (
-        <div className="result">
-          <h2>Persona Encontrada:</h2>
-          <p>RUT: {foundPerson.rut}</p>
-          <p>Nombres: {foundPerson.nombres}</p>
-          <p>Apellidos: {foundPerson.apellidos}</p>
-          <p>Fecha de Nacimiento: {foundPerson.fecha_de_nacimiento}</p>
-          <p>Número de Infracciones: {foundPerson.numero_de_infracciones}</p>
-        </div>
-      )}
-
-      {foundPerson === null && <p>No se encontró a la persona con el RUT proporcionado.</p>}
+    <div className="list-people-container">
+      <div class="menu">
+      <a href='Sanbenito1' class='button'>Ingresar</a>
+      <a href='Sanbenito2' class='button'>Buscar</a>
+      <a href='Sanbenito3' class='button'>Mostrar</a>
+      </div>
+      <h1>Municipalidad de San Benito</h1>
+      <h2>Buscar Infractor</h2>
+      <div>
+        <label>Filtrar por RUT:</label>
+        <input
+          type="text"
+          value={rutFilter}
+          onChange={handleRutFilterChange}
+        />
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>RUT</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Número de Infracciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredPeople.map((person) => (
+            <tr key={person.id}>
+              <td>{person.rut}</td>
+              <td>{person.nombres}</td>
+              <td>{person.apellidos}</td>
+              <td>{person.fecha_de_nacimiento}</td>
+              <td>{person.numero_de_infracciones}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Appinfractsearch;
+export default ListPeople;

@@ -50,7 +50,7 @@ const MyComponent = () => {
       <h2>Ingresar Infractor</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>RUT:</label>
+            <label>RUT: </label>
             <input
               type="text"
               name="rut"
@@ -59,7 +59,7 @@ const MyComponent = () => {
             />
           </div>
           <div>
-            <label>Nombres:</label>
+            <label>Nombres: </label>
             <input
               type="text"
               name="nombres"
@@ -68,7 +68,7 @@ const MyComponent = () => {
             />
           </div>
           <div>
-            <label>Apellidos:</label>
+            <label>Apellidos: </label>
             <input
               type="text"
               name="apellidos"
@@ -77,7 +77,7 @@ const MyComponent = () => {
             />
           </div>
           <div>
-            <label>Fecha de Nacimiento:</label>
+            <label>Fecha de Nacimiento: </label>
             <input
               type="date"
               name="fecha_de_nacimiento"
@@ -86,7 +86,7 @@ const MyComponent = () => {
             />
           </div>
           <div>
-            <label>Número de Infracciones:</label>
+            <label>Número de Infracciones: </label>
             <input
               type="number"
               name="numero_de_infracciones"
@@ -94,7 +94,7 @@ const MyComponent = () => {
               onChange={handleInputChange}
             />
           </div>
-          <button type="submit">Crear Persona</button>
+          <button type="submit">Ingresar</button>
         </form>
       </div>
   );

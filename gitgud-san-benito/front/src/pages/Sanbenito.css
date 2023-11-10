@@ -12,7 +12,16 @@ h2 {
 
 p {
   font-size: 12px;
+  padding: 20px;
   text-align: center;
+}
+
+.list-people-container {
+  text-align: center; /* Alinea el contenido al centro */
+}
+
+table {
+  margin: 0 auto; /* Centra la tabla horizontalmente */
 }
 
 .button {
