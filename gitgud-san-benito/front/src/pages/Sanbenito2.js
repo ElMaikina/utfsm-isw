@@ -31,9 +31,10 @@ const ListPeople = () => {
   return (
     <div className="list-people-container">
       <div class="menu">
-      <a href='Sanbenito1' class='button'>Ingresar</a>
-      <a href='Sanbenito2' class='button'>Buscar</a>
-      <a href='Sanbenito3' class='button'>Mostrar</a>
+      <a href='Sanbenito1' class='button'>Ingresar Infractor</a> 
+      <a href='Sanbenito4' class='button'>Ingresar Evidencia</a>
+      <a href='Sanbenito2' class='button'>Buscar Infractor</a>
+      <a href='Sanbenito3' class='button'>Mostrar Infractores</a>
       </div>
       <h1>Municipalidad de San Benito</h1>
       <h2>Buscar Infractor</h2>

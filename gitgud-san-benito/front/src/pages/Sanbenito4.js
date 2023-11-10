@@ -3,18 +3,17 @@ import './Sanbenito.css';
 
 const MyComponent = () => {
   const [formData, setFormData] = useState({
-    rut: '',
-    nombres: '',
-    apellidos: '',
-    fecha_de_nacimiento: '',
-    numero_de_infracciones: 0,
+    acusado: '',
+    descripcion: '',
+    foto: '',
+    video: '',
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/infractores/", {
+      const response = await fetch("http://127.0.0.1:8000/evidencia/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,9 +23,9 @@ const MyComponent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Persona creada:', data);
+        console.log('Evidencia creada:', data);
       } else {
-        console.error('Error al crear la persona');
+        console.error('Error al crear la evidencia');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -48,50 +47,43 @@ const MyComponent = () => {
       <a href='Sanbenito3' class='button'>Mostrar Infractores</a>
       </div>
       <h1>Municipalidad de San Benito</h1>
-      <h2>Ingresar Infractor</h2>
+      <h2>Ingresar Evidencia</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>RUT: </label>
+            <label>RUT del Acusado: </label>
             <input
               type="text"
-              name="rut"
-              value={formData.rut}
+              name="acusado"
+              value={formData.acusado}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label>Nombres: </label>
+            <label>Descripcion: </label>
             <input
               type="text"
-              name="nombres"
-              value={formData.nombres}
+              name="descripcion"
+              value={formData.descripcion}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label>Apellidos: </label>
+            <label>Foto: </label>
             <input
-              type="text"
-              name="apellidos"
-              value={formData.apellidos}
+              type="file"
+              name="foto"
+              accept="image/*"
+              value={formData.foto}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label>Fecha de Nacimiento: </label>
+            <label>Video: </label>
             <input
-              type="date"
-              name="fecha_de_nacimiento"
-              value={formData.fecha_de_nacimiento}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label>Número de Infracciones: </label>
-            <input
-              type="number"
-              name="numero_de_infracciones"
-              value={formData.numero_de_infracciones}
+              type="file"
+              name="video"
+              accept="video/*"
+              value={formData.video}
               onChange={handleInputChange}
             />
           </div>
