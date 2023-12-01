@@ -35,6 +35,7 @@ const ListPeople = () => {
       <a href='Sanbenito4' class='button'>Ingresar Evidencia</a>
       <a href='Sanbenito2' class='button'>Buscar Infractor</a>
       <a href='Sanbenito3' class='button'>Mostrar Infractores</a>
+      <a href='Sanbenito5' class='button'>Pagar Infraccion</a>
       </div>
       <h1>Municipalidad de San Benito</h1>
       <h2>Buscar Infractor</h2>

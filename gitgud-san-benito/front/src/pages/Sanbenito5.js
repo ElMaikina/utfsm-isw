@@ -3,18 +3,20 @@ import './Sanbenito.css';
 
 const MyComponent = () => {
   const [formData, setFormData] = useState({
+    fecha_emision: '',
+    gravedad: '',
     acusado: '',
-    descripcion: '',
-    foto: '',
-    video: '',
+    acusante: '',
+    patente_auto: '',
+    multa: '',
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/evidencia/", {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:8000/infracciones/", {
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -23,9 +25,9 @@ const MyComponent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Evidencia creada:', data);
+        console.log('Infraccion pagada:', data);
       } else {
-        console.error('Error al crear la evidencia');
+        console.error('Error al borrar la infraccion');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -48,10 +50,30 @@ const MyComponent = () => {
       <a href='Sanbenito5' class='button'>Pagar Infraccion</a>
       </div>
       <h1>Municipalidad de San Benito</h1>
-      <h2>Ingresar Evidencia</h2>
+      <h2>Pagar Infraccion</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>RUT del Acusado: </label>
+            <label>Fecha de Emision: </label>
+            <input
+              type="date"
+              name="fecha_emision"
+              value={formData.fecha_emision}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Gravedad: </label>
+            <input
+              type="range"
+              name="gravedad"
+              min="1"
+              max="11"
+              value={formData.gravedad}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Acusado: </label>
             <input
               type="text"
               name="acusado"
@@ -60,35 +82,33 @@ const MyComponent = () => {
             />
           </div>
           <div>
-            <label>Descripcion: </label>
+            <label>Acusante: </label>
             <input
               type="text"
-              name="descripcion"
-              value={formData.descripcion}
+              name="acusante"
+              value={formData.acusante}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label>Foto: </label>
+            <label>Patente del Auto: </label>
             <input
-              type="file"
-              name="foto"
-              accept="image/*"
-              value={formData.foto}
+              type="text"
+              name="patente_auto"
+              value={formData.patente_auto}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label>Video: </label>
+            <label>Multa: </label>
             <input
-              type="file"
-              name="video"
-              accept="video/*"
-              value={formData.video}
+              type="number"
+              name="multa"
+              value={formData.multa}
               onChange={handleInputChange}
             />
           </div>
-          <button type="submit">Ingresar</button>
+          <button type="submit">Pagar</button>
         </form>
       </div>
   );

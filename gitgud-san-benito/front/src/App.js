@@ -6,6 +6,7 @@ import Sanbenito1 from './pages/Sanbenito1';
 import Sanbenito2 from './pages/Sanbenito2';
 import Sanbenito3 from './pages/Sanbenito3';
 import Sanbenito4 from './pages/Sanbenito4';
+import Sanbenito5 from './pages/Sanbenito5';
 export default function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="sanbenito2" element={<Sanbenito2 />} />
         <Route path="sanbenito3" element={<Sanbenito3 />} />
         <Route path="sanbenito4" element={<Sanbenito4 />} />
+        <Route path="sanbenito5" element={<Sanbenito5 />} />
       </Routes>
     </div>
   );
